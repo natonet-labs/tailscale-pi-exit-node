@@ -65,12 +65,23 @@ This guide focuses on:
 
 This pattern is ideal when you just want a simple, portable “home VPN” — for example, using your Pi as the exit node while traveling with only your phone or tablet.[^3]
 
+### 2.3 Cloudflare Worker Tailscale Monitor
+
+File: [tailscale-monitor.md](tailscale-monitor.md)
+
+This guide shows how to: 
+- Build a Cloudflare Worker that periodically checks the status of a Tailscale device (i.e: Raspberry Pi exit node) and sends alerts to Slack when it goes offline or comes back online. 
+- Uses a Tailscale OAuth client with read‑only device scope, a KV namespace to store the last known state, and a cron trigger so the Worker can run on a schedule without any always‑on server.
+
+This pattern is ideal when you rely on a Raspberry Pi (or other node) as a critical exit node and want proactive notifications if it becomes unavailable, so you can fix issues before you discover your VPN is down while traveling.
+
 ## 3. When to Use Which Guide?
 
 - Use tailscale-exit-node.md if you are starting from scratch and want to turn a Raspberry Pi at home into your primary secure exit node for devices like an iPad, laptop, or phone.
 - Use gl-mt-3000-exit-node.md if you also own a GL‑MT3000 travel router and want a setup where even locked‑down work devices (that cannot run Tailscale) can still benefit from your Pi exit node by connecting through the router.[^5] [^4] [^2]
+- Use tailscale-monitor.md if you want a Cloudflare Worker that watches your Pi exit node (via the Tailscale API) and sends Slack alerts whenever it goes offline or comes back online.
 
-Both guides build on the same core ideas:
+The guides build on the same core ideas:
 
 1. A Tailscale tailnet for private, encrypted connectivity between your devices.[^1]
 2. One or more exit nodes you control.
