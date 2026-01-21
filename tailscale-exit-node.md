@@ -1,10 +1,35 @@
 # Secure Public WiFi with Tailscale + Raspberry Pi Exit Node
 
+```mermaid
+flowchart LR
+    %% Locations
+    T[Tailscale Mesh VPN]
+
+    subgraph Public_Network[Public]
+        W[Public WiFi]
+        D[iPad, laptop - Tailscale Client]
+    end
+
+    subgraph Home_Network[Private]
+        R[Home Router / Modem]
+        P[Raspberry Pi at Home - Tailscale Exit Node]
+    end
+
+    %% Device connections
+    D --> W
+    W --> T
+    T --> P
+    P --> R --> I[Internet]
+
+    %% Logical data path
+    D ==>|Encrypted Tailscale tunnel| P
+```
+
 This guide shows how to:
 
 - Turn a **Raspberry Pi at home** into a secure **Tailscale exit node** (like your own VPN server).
 - Use the **Tailscale app on your iPad** to send all internet traffic through that Pi, so that:
-    - Public WiFi (hotel, café, airport) only sees encrypted Tailscale traffic.
+    - Public WiFi (hotel, coffee shop, airport) only sees encrypted Tailscale traffic.
     - Websites see your **home IP address**, not the hotel’s.
 
 No prior networking experience is assumed.
@@ -207,7 +232,7 @@ On the iPad, with Tailscale connected and the Pi selected as the exit node:
     - https://ifconfig.io
 3. Compare this IP to the IP you see when using WiFi directly at home (not via Tailscale).[^3]
 
-If the exit node is working, the IP address should match your **home** IP (or your home router’s ISP IP), not the hotel or café IP.
+If the exit node is working, the IP address should match your **home** IP (or your home router’s ISP IP), not the hotel or coffee shop IP.
 
 ### 8.2 Test basic browsing
 
@@ -253,7 +278,7 @@ If:
 
 ## 10. Everyday Usage Pattern When Traveling
 
-When you go to a hotel or café:
+When you go to a hotel or coffee shop:
 
 1. Connect your **iPad** to the local WiFi like normal.
 2. Open the **Tailscale** app on the iPad.
