@@ -1,5 +1,38 @@
 # Secure Public WiFi with GL‑MT3000 + Raspberry Pi (Tailscale Exit Node)
 
+```mermaid
+flowchart LR
+    %% Core devices
+    H[Public WiFi]
+    M[GL-MT3000<br/>Travel Router]
+    L[LAN Clients<br/>Work laptop, iPad, etc.]
+    T[Tailscale Mesh VPN]
+    R[Home Router / Modem]
+    P[Raspberry Pi at Home<br/>Tailscale Exit Node]
+    I[Internet]
+
+    %% Local network at hotel
+    H --> M
+    L --> M
+
+    %% Tailscale path and exit node
+    M --> T --> P --> R --> I
+
+    %% Logical roles
+    subgraph Hotel_Site[Public]
+        direction TB
+        H
+        M
+        L
+    end
+
+    subgraph Home_Site[Private]
+        direction TB
+        R
+        P
+    end
+```
+
 This guide walks through configuring:
 
 - A **Raspberry Pi at home** as a Tailscale exit node.
