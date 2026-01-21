@@ -7,7 +7,7 @@ flowchart LR
 
     subgraph Public_Network[Public]
         W[Public WiFi]
-        D[iPad, laptop - Tailscale Client]
+        D[Tailscale Clients - iPad, laptop, etc.]
     end
 
     subgraph Home_Network[Private]
