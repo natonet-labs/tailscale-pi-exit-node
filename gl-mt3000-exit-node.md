@@ -4,11 +4,11 @@
 flowchart LR
     %% Core devices
     H[Public WiFi]
-    M[GL-MT3000<br/>Travel Router]
-    L[LAN Clients<br/>Work laptop, iPad, etc.]
+    M[GL-MT3000 - Travel Router]
+    L[LAN Clients - iPad, laptop, etc.]
     T[Tailscale Mesh VPN]
     R[Home Router / Modem]
-    P[Raspberry Pi at Home<br/>Tailscale Exit Node]
+    P[Raspberry Pi at Home - Tailscale Exit Node]
     I[Internet]
 
     %% Local network at hotel
