@@ -34,11 +34,11 @@ Detailed step-by-steps included:
 | Locked-down laptops | GL-MT3000 Router | GL-MT3000 (travel) + Pi | Work devices via private WiFi hotspot |
 | Proactive alerts | Cloudflare Monitor | Pi + Cloudflare free tier | Always-on uptime notifications |
 
-## Contributing {#contributing}
+## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## License {#license}
+## License
 
 MIT – see [LICENSE.md](LICENSE.md) file.
 
