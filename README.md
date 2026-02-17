@@ -3,7 +3,7 @@
 
 # Tailscale for Network Security
 
-Secure your devices with Tailscale - a WireGuard-based mesh VPN for encrypted access without port forwarding or static IPs. Guides for exit nodes and monitoring tailored for travel/home labs.
+Secure your devices with Tailscale—a WireGuard-based mesh VPN. Build private, encrypted networks without port forwarding, static IPs, or complex firewalls. **Hands-on guides** for home, travel, and public Wi-Fi using your own exit nodes.
 
 ## Table of Contents
 - [Why Tailscale?](#why-tailscale)
