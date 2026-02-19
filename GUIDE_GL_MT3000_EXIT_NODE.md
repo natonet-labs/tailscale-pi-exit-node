@@ -10,35 +10,25 @@ Create a travel VPN: GL-MT3000 (subnet router) forwards LAN devices (laptops/iPa
 
 ```mermaid
 flowchart LR
-    %% Core devices
-    H[Public Wi-Fi]
-    M[GL-MT300 - Travel Router]
-    L[LAN Clients - iPad, laptop, etc.]
-    T[Tailscale Mesh VPN]
-    R[Home Router / Modem]
-    P[Raspberry Pi at Home - Tailscale Exit Node]
-    I[Internet]
+  H[Public Wi-Fi] --> M[GL-MT3000 Router]
+  L[LAN Clients] --> M
+  M --> T[Tailscale Mesh] --> P[RPi Exit Node] --> R[Home Router] --> I[Internet]
+  M ==>|Encrypted Tunnel| P
+  
+  subgraph Hotel[Public]
+    direction TB
+    H; M; L
+  end
+  
+  subgraph Home[Private]
+    direction TB
+    R; P
+  end
 
-    %% Local network at hotel
-    H --> M
-    L --> M
-
-    %% Tailscale path and exit node
-    M --> T --> P --> R --> I
-
-    %% Logical roles
-    subgraph Hotel_Site[Public]
-        direction TB
-        H
-        M
-        L
-    end
-
-    subgraph Home_Site[Private]
-        direction TB
-        R
-        P
-    end
+classDef hotel fill:#ffebee
+classDef home fill:#e8f5e8
+class Hotel hotel
+class Home home
 ```
 
 ## Quick Start
