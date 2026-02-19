@@ -9,15 +9,22 @@ Turn a Raspberry Pi at home into your own VPN exit node and route your device's 
 ```mermaid
 flowchart LR
   subgraph Public_Network[Public]
+    direction TB
     W[Public Wi-Fi]
-    D[iPad / iPhone / Laptop]
+    D[iPad / Laptop]
   end
-  subgraph Home_Network[Home]
+  subgraph Home_Network[Private]
+    direction TB
     R[Home Router]
-    P[Raspberry Pi Exit Node]
+    P[RPi Exit Node]
   end
   D --> W --> T[Tailscale Mesh] --> P --> R --> I[Internet]
-  D ==>|Encrypted Tailscale tunnel| P
+  D ==>|Encrypted Tunnel| P
+
+classDef public fill:#ffebee
+classDef private fill:#e8f5e8
+class Public_Network public
+class Home_Network private
 ```
 
 ## Quick Start
