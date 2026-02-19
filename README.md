@@ -1,5 +1,4 @@
-[![Tailscale](https://img.shields.io/badge/Tailscale-Exit%20Node-blue?logo=vpn)] 
-[![GL.iNet](https://img.shields.io/badge/GL-iNet-blue?logo=router)] [![RPi5](https://img.shields.io/badge/RPi-5-E30B5D?logo=Raspberrypi)] [![Cloudfare](https://img.shields.io/badge/Cloudfare-Worker-blue)] [![Slack](https://img.shields.io/badge/Slack-Notification-blue)]
+[![Tailscale](https://img.shields.io/badge/Tailscale-blue?logo=vpn&logoColor=white)] [![RPi](https://img.shields.io/badge/Raspberry%20Pi-5-E30B5D?logo=raspberrypi&logoColor=white)] [![GL.iNet](https://img.shields.io/badge/GL.iNet-green?logo=router&logoColor=white)] [![Cloudflare](https://img.shields.io/badge/Cloudflare-Worker-orange?logo=cloudflare&logoColor=white)] [![Slack](https://img.shields.io/badge/Slack-teal?logo=slack&logoColor=white)]
 
 # Tailscale for Network Security
 
@@ -15,24 +14,21 @@ Secure your devices with Tailscale—a WireGuard-based mesh VPN. Build private, 
 ## Why Tailscale?
 - **Strong Encryption**: End-to-end WireGuard crypto.
 - **Zero Config**: NAT traversal, no ports/static IPs needed.
-- **Exit Nodes**: Tunnel traffic via your Pi/home for safe public WiFi.
+- **Exit Nodes**: Tunnel traffic via your Pi/home for safe public Wi-Fi.
 - **Cross-Platform**: iOS, Android, macOS, Linux, routers.
 
 ## Guides
-
-Detailed step-by-steps included:
-
-- **[RPi Exit Node](GUIDE_TAILSCALE_EXIT_NODE.md)**: Turn Raspberry Pi into VPN server. Connect iPad/laptop via Tailscale app on hotel WiFi.
-- **[GL-MT3000 Travel Router](GUIDE_GL_MT3000_EXIT_NODE.md)**: Use GL.iNet router as client; route via Pi exit node (even for non-Tailscale devices).
-- **[Cloudflare Monitor](GUIDE_CLOUDFLARE_MONITOR.md)**: Worker checks Pi status every 15min; Slack alerts on offline/online.
+- [![Ready](https://img.shields.io/badge/Ready-green)] **[RPi Exit Node](GUIDE_TAILSCALE_EXIT_NODE.md)**
+- [![Ready](https://img.shields.io/badge/Ready-green)] **[GL-MT3000](GUIDE_GL_MT3000_EXIT_NODE.md)**
+- [![Ready](https://img.shields.io/badge/Ready-green)] **[Cloudflare Monitor](GUIDE_CLOUDFLARE_MONITOR.md)**
 
 ## Comparison
 
 | Use Case | Guide | Hardware | Best For |
 |----------|-------|----------|----------|
-| Simple travel VPN | RPi Exit Node | Raspberry Pi (home) + iPad/phone | Personal devices on public WiFi |
-| Locked-down laptops | GL-MT3000 Router | GL-MT3000 (travel) + Pi | Work devices via private WiFi hotspot |
-| Proactive alerts | Cloudflare Monitor | Pi + Cloudflare free tier | Always-on uptime notifications |
+| 📱 Simple VPN | RPi Exit Node | Pi + Phone | Personal travel |
+| 💼 Work laptops | GL-MT3000 | Router + Pi | Locked-down devices |
+| 🔔 Alerts | Cloudflare | Pi + Free tier | Uptime monitoring |
 
 ## Contributing
 
