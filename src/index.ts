@@ -25,7 +25,7 @@ export default {
 };
 
 async function checkTailscaleNode(env: Env): Promise<void> {
-  const EXIT_NODE_NAME = "playhub"; // change to your Pi hostname
+  const EXIT_NODE_NAME = "raspberrypi"; // change to your Pi hostname
 
   try {
     const tokenResponse = await fetch("https://api.tailscale.com/api/v2/oauth/token", {

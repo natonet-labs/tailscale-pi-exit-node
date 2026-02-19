@@ -1,5 +1,5 @@
 [![Tailscale](https://img.shields.io/badge/Tailscale-Exit%20Node-blue?logo=vpn&logoColor=white)]
-[![GL.iNet](https://img.shields.io/badge/GL.iNet-MT3000-teal?logo=router&logoColor=white)]
+[![GL.iNet](https://img.shields.io/badge/GL.iNet-MT3000-blue?logo=router&logoColor=white)]
 [![RPi](https://img.shields.io/badge/Raspberry%20Pi-5-E30B5D?logo=raspberrypi&logoColor=white)]
 
 # Secure Public Wi-Fi: GL-MT3000 + Raspberry Pi Exit Node

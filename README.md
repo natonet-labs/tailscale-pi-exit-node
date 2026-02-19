@@ -1,4 +1,4 @@
-[![Tailscale](https://img.shields.io/badge/Tailscale-blue?logo=vpn&logoColor=white)] [![RPi](https://img.shields.io/badge/Raspberry%20Pi-5-E30B5D?logo=raspberrypi&logoColor=white)] [![GL.iNet](https://img.shields.io/badge/GL.iNet-green?logo=router&logoColor=white)] [![Cloudflare](https://img.shields.io/badge/Cloudflare-Worker-orange?logo=cloudflare&logoColor=white)] [![Slack](https://img.shields.io/badge/Slack-teal?logo=slack&logoColor=white)]
+[![Tailscale](https://img.shields.io/badge/Tailscale-blue?logo=vpn&logoColor=white)] [![GL.iNet](https://img.shields.io/badge/GL.iNet-MT3000-blue?logo=router&logoColor=white)] [![RPi](https://img.shields.io/badge/Raspberry%20Pi-5-E30B5D?logo=raspberrypi&logoColor=white)] [![Cloudflare](https://img.shields.io/badge/Cloudflare-Worker-orange?logo=cloudflare&logoColor=white)] [![Slack](https://img.shields.io/badge/Slack-teal?logo=slack&logoColor=white)]
 
 # Tailscale for Network Security
 
