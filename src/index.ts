@@ -5,6 +5,10 @@
  * the exit node is connected, and posts to Slack only when its state changes
  * (online → offline or offline → online). The last known state lives in KV.
  *
+ * KV is written only on changes: a missing state means "online", and an
+ * ongoing monitoring error (e.g. the Tailscale API is down) is alerted once
+ * when it starts and once when it clears, not on every run.
+ *
  * Secrets: TAILSCALE_CLIENT_ID, TAILSCALE_CLIENT_SECRET, SLACK_WEBHOOK_URL.
  * See GUIDE_CLOUDFLARE_MONITOR.md for setup.
  */
@@ -40,7 +44,7 @@ async function checkTailscaleNode(env: Env): Promise<void> {
     });
 
     if (!tokenResponse.ok) {
-      await sendSlackAlert(env, `❌ Failed to get Tailscale token: ${tokenResponse.status}`);
+      await reportError(env, "token", `❌ Failed to get Tailscale token: ${tokenResponse.status}`);
       return;
     }
 
@@ -54,7 +58,7 @@ async function checkTailscaleNode(env: Env): Promise<void> {
     });
 
     if (!devicesResponse.ok) {
-      await sendSlackAlert(env, `❌ Failed to fetch devices: ${devicesResponse.status}`);
+      await reportError(env, "devices", `❌ Failed to fetch devices: ${devicesResponse.status}`);
       return;
     }
 
@@ -65,9 +69,11 @@ async function checkTailscaleNode(env: Env): Promise<void> {
     // console.log("Found exit node:", exitNode ? exitNode.hostname : "NOT FOUND");
 
     if (!exitNode) {
-      await sendSlackAlert(env, `⚠️ Exit node '${EXIT_NODE_NAME}' not found in tailnet`);
+      await reportError(env, "not_found", `⚠️ Exit node '${EXIT_NODE_NAME}' not found in tailnet`);
       return;
     }
+
+    await clearError(env);
 
     // Consider it online if: connectedToControl is true and lastSeen is within the last 5 minutes (300000 ms)
     const now = Date.now();
@@ -89,13 +95,29 @@ async function checkTailscaleNode(env: Env): Promise<void> {
     } else if (isOnline && previousState === "offline") {
       await sendSlackAlert(env, `✅ Tailscale exit node '${EXIT_NODE_NAME}' is back ONLINE`);
       await env.TAILSCALE_STATE.put("exit_node_state", "online");
-    } else if (isOnline) {
-      await env.TAILSCALE_STATE.put("exit_node_state", "online");
     }
   } catch (err: any) {
     // console.log("Error in checkTailscaleNode:", err);
-    await sendSlackAlert(env, `❌ Monitoring error: ${err?.message ?? String(err)}`);
+    await reportError(env, "exception", `❌ Monitoring error: ${err?.message ?? String(err)}`);
   }
+}
+
+// Ongoing monitoring error, by kind ("token", "devices", "not_found",
+// "exception"). Kinds rather than full messages, so a flapping status code
+// (502, then 503) doesn't re-alert.
+const ERROR_KEY = "monitor_error";
+
+async function reportError(env: Env, kind: string, message: string): Promise<void> {
+  if ((await env.TAILSCALE_STATE.get(ERROR_KEY)) === kind) return; // already alerted
+  await sendSlackAlert(env, message);
+  await env.TAILSCALE_STATE.put(ERROR_KEY, kind);
+}
+
+async function clearError(env: Env): Promise<void> {
+  const kind = await env.TAILSCALE_STATE.get(ERROR_KEY);
+  if (kind === null) return;
+  await env.TAILSCALE_STATE.delete(ERROR_KEY);
+  await sendSlackAlert(env, `✅ Tailscale monitoring recovered (was failing: ${kind})`);
 }
 
 async function sendSlackAlert(env: Env, message: string): Promise<void> {
