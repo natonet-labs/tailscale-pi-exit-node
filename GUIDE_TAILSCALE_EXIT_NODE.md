@@ -1,6 +1,6 @@
-[![Tailscale](https://img.shields.io/badge/Tailscale-Exit%20Node-blue?logo=vpn&logoColor=white)]
-[![RPi](https://img.shields.io/badge/Raspberry%20Pi-5-E30B5D?logo=raspberrypi&logoColor=white)]
-[![iOS](https://img.shields.io/badge/iOS-Client-grey?logo=apple&logoColor=white)]
+![Tailscale](https://img.shields.io/badge/Tailscale-Exit%20Node-blue?logo=vpn&logoColor=white)
+![RPi](https://img.shields.io/badge/Raspberry%20Pi-5-E30B5D?logo=raspberrypi&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-Client-grey?logo=apple&logoColor=white)
 
 # Secure Public Wi-Fi with Tailscale + Raspberry Pi Exit Node
 

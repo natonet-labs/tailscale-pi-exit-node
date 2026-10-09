@@ -1,4 +1,4 @@
-[![Tailscale](https://img.shields.io/badge/Tailscale-blue?logo=vpn&logoColor=white)] [![Cloudflare](https://img.shields.io/badge/Cloudflare-Worker-orange?logo=cloudflare&logoColor=white)] [![Slack](https://img.shields.io/badge/Slack-teal?logo=slack&logoColor=white)]
+![Tailscale](https://img.shields.io/badge/Tailscale-blue?logo=vpn&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-Worker-orange?logo=cloudflare&logoColor=white) ![Slack](https://img.shields.io/badge/Slack-teal?logo=slack&logoColor=white)
 
 # Cloudflare Worker: Tailscale Monitor
 
