@@ -37,8 +37,8 @@ function mockApis(api: ApiState): string[] {
 	return slackMessages;
 }
 
-const onlineNode = () => ({ hostname: 'raspberrypi', connectedToControl: true, lastSeen: new Date().toISOString() });
-const offlineNode = () => ({ hostname: 'raspberrypi', connectedToControl: false, lastSeen: new Date(Date.now() - 3_600_000).toISOString() });
+const onlineNode = () => ({ hostname: 'rpi', connectedToControl: true, lastSeen: new Date().toISOString() });
+const offlineNode = () => ({ hostname: 'rpi', connectedToControl: false, lastSeen: new Date(Date.now() - 3_600_000).toISOString() });
 
 async function runCron(): Promise<void> {
 	const ctx = createExecutionContext();
@@ -86,7 +86,7 @@ describe('tailscale exit node monitor', () => {
 		const slack = mockApis({ devices: [{ hostname: 'some-other-host' }] });
 		await runCron();
 		expect(slack).toHaveLength(1);
-		expect(slack[0]).toContain("'raspberrypi' not found");
+		expect(slack[0]).toContain("'rpi' not found");
 	});
 
 	it('alerts once while the Tailscale API stays down, then once on recovery', async () => {

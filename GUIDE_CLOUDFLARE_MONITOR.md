@@ -41,7 +41,7 @@ npm i -g wrangler && wrangler login
 mkdir monitor && cd monitor && wrangler init --typescript
 # Edit wrangler.jsonc: crons */15, KV namespace
 wrangler kv namespace create "TAILSCALE_STATE"
-# Update src/index.ts: EXIT_NODE_NAME = "raspberrypi"
+# Update src/index.ts: EXIT_NODE_NAME = "rpi"
 wrangler secret put TAILSCALE_CLIENT_ID
 wrangler secret put TAILSCALE_CLIENT_SECRET
 wrangler secret put SLACK_WEBHOOK_URL
