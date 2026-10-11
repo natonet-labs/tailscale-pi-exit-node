@@ -32,7 +32,7 @@ Secure your devices with Tailscale—a WireGuard-based mesh VPN. Build private, 
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+See the [natonet-labs contributing guide](https://github.com/natonet-labs/.github/blob/main/CONTRIBUTING.md).
 
 ## License
 
